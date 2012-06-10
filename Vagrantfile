@@ -1,6 +1,6 @@
 Vagrant::Config.run do |config|
 
-	config.vm.define :chefs do |chefs_config|
+	config.vm.define "chef-server" do |chefs_config|
 
 		chefs_config.vm.box = "precise64"
 		chefs_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -17,8 +17,8 @@ Vagrant::Config.run do |config|
 			chef.run_list.clear
 
 			chef.json = {
-				:chef=> {
-					:server_url=> "http://localhost:4000",
+				:chef_server=> {
+					:url=> "http://localhost:4000",
 					:webui_enabled=> true,
 				}
 			}
