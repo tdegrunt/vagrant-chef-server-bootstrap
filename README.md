@@ -17,11 +17,11 @@ After changing this issue `/etc/init.d/chef-server start` and it will start.
 
 The web UI suffers from the same issue, the file `/etc/init.d/chef-server-webui` has:
 
-  DAEMON=/usr/bin/chef-server-webui
+  	DAEMON=/usr/bin/chef-server-webui
 
 but is should read:
 
-  DAEMON=/user/sbin/chef-server-webui
+  	DAEMON=/user/sbin/chef-server-webui
 
 After changing this issue `/etc/init.d/chef-server-webui start` and it will start.
 
