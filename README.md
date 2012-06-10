@@ -13,4 +13,4 @@ but it should read:
 
 	DAEMON=/usr/sbin/chef-server
 
-After this issue `/etc/init.d/chef-server start` and it will start.
+After changing this issue `/etc/init.d/chef-server start` and it will start.
