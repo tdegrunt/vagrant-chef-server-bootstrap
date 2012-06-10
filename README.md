@@ -14,3 +14,8 @@ but it should read:
 	DAEMON=/usr/sbin/chef-server
 
 After changing this issue `/etc/init.d/chef-server start` and it will start.
+
+## Using
+
+Once the above is changed go to [http://localhost:4000](http://localhost:4000) to see REST API working.
+The Web UI is on [http://localhost:4040](http://localhost:4040)
