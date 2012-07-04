@@ -11,8 +11,9 @@ In the meantime this will solve the issue:
 	cd /usr/bin
 	ln -s /usr/sbin/chef-server-webui chef-server-webui
 	ln -s /usr/sbin/chef-server chef-server
+	ln -s /usr/sbin/chef-server chef-solr
 
-Issue `/etc/init.d/chef-server start` and `/etc/init.d/chef-server-webui start` to start.
+Issue `/etc/init.d/chef-server start`, `/etc/init.d/chef-server-webui start` and `/etc/init.d/chef-server-solr start` to start.
 
 ## Using
 
