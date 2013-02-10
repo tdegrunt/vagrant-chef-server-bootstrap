@@ -1,34 +1,31 @@
 require "berkshelf/vagrant"
 
 Vagrant::Config.run do |config|
+  config.vm.define "chef-server" do |chefs_config|
+    chefs_config.vm.box = "precise64"
+    chefs_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    chefs_config.vm.host_name = "chefserver"
+    chefs_config.vm.forward_port 4000, 4000
+    chefs_config.vm.forward_port 4040, 4040
+    chefs_config.vm.forward_port 22, 2223
 
-	config.vm.define "chef-server" do |chefs_config|
+    config.vm.provision :chef_solo do |chef|
+      chef.log_level = :debug
 
-		chefs_config.vm.box = "precise64"
-		chefs_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-		chefs_config.vm.host_name = "chefserver"
-		chefs_config.vm.forward_port 4000, 4000
-		chefs_config.vm.forward_port 4040, 4040
-		chefs_config.vm.forward_port 22, 2223
+      chef.cookbooks_path = "cookbooks"
+      chef.run_list.clear
 
-		config.vm.provision :chef_solo do |chef|
+      chef.json = {
+        :chef_server=> {
+          :url=> "http://localhost:4000",
+          :webui_enabled=> true,
+        }
+      }
 
-		chef.log_level = :debug
-
-			chef.cookbooks_path = "cookbooks"
-			chef.run_list.clear
-
-			chef.json = {
-				:chef_server=> {
-					:url=> "http://localhost:4000",
-					:webui_enabled=> true,
-				}
-			}
-
-			chef.add_recipe "apt"
-			chef.add_recipe "build-essential"
-			chef.add_recipe "chef-server::rubygems-install"
-			chef.add_recipe "fixup"
-		end
-	end
+      chef.add_recipe "apt"
+      chef.add_recipe "build-essential"
+      chef.add_recipe "chef-server::rubygems-install"
+      chef.add_recipe "fixup"
+    end
+  end
 end
