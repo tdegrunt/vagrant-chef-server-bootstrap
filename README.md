@@ -1,24 +1,11 @@
 # vagrant-chef-server-bootstrap
 
-Vagrant file &amp; cookbooks to install chef-server in VM
+Vagrant file & cookbooks to install chef-server in VM
 
 ## NOTES
 
 There seems to be a problem with the installation, which seems related to the gem.
 The chef deamons files in `/etc/init.d` have incorrect paths in their `DAEMON` parameter, incorrectly referring to `/usr/bin` instead of `/usr/sbin`. In the meantime this will solve the issue:
-
-	cd /usr/bin
-	ln -s /usr/sbin/chef-server-webui chef-server-webui
-	ln -s /usr/sbin/chef-server chef-server
-	ln -s /usr/sbin/chef-server chef-solr
-	ln -s /usr/sbin/chef-expander chef-expander
-
-Issue the below to restart them:
-
-	/etc/init.d/chef-server start
-	/etc/init.d/chef-server-webui start
-	/etc/init.d/chef-server-solr start
-	/etc/init.d/chef-expander start
 
 ## Using
 

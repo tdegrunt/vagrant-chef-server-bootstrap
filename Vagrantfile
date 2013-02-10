@@ -13,7 +13,7 @@ Vagrant::Config.run do |config|
 
 		config.vm.provision :chef_solo do |chef|
 
-		    chef.log_level = :debug
+		chef.log_level = :debug
 
 			chef.cookbooks_path = "cookbooks"
 			chef.run_list.clear
@@ -28,6 +28,7 @@ Vagrant::Config.run do |config|
 			chef.add_recipe "apt"
 			chef.add_recipe "build-essential"
 			chef.add_recipe "chef-server::rubygems-install"
+			chef.add_recipe "fixup"
 		end
 	end
 end
