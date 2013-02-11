@@ -1,0 +1,1 @@
+cookbook 'apache2', :locked_version => '1.5.0'
