@@ -1,0 +1,5 @@
+name        "fixup"
+license     "Apache 2.0"
+description "Workaround for haml 4.0 incompatibility"
+version     "0.0.1"
+supports    "ubuntu"
